@@ -1,0 +1,24 @@
+{
+    "name": "edsh/vereinsflieger-sdk-php",
+    "description": "PHP wrapper for the vereinsflieger.de REST API",
+    "type": "library",
+    "require": {
+        "beberlei/assert": "^2.7",
+        "php": "7.1",
+        "roave/security-advisories": "dev-master",
+        "psr/http-message": "^1.0",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LuftsportvereinBacknangHeiningen\\VereinsfliegerDeSdk\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Föder",
+            "email": "adrian@foeder.de"
+        }
+    ]
+}
