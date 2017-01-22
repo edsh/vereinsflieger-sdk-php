@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Port\Adapter\ApiClient;
-use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Port\Adapter\RemoteAccessToken;
+use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Infrastructure\ApiClient;
+use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Infrastructure\RemoteAccessToken;
 
 $apiClient = new ApiClient();
 

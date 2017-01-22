@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Port\Adapter;
+namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Infrastructure;
 
 interface AccessTokenInterface
 {
