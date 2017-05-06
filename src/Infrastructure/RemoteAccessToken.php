@@ -16,6 +16,8 @@ class RemoteAccessToken implements AccessTokenInterface
      */
     private $httpApiClient;
 
+    private $token;
+
     public function __construct(ApiClient $httpApiClient)
     {
         $this->httpApiClient = $httpApiClient;
@@ -27,6 +29,14 @@ class RemoteAccessToken implements AccessTokenInterface
     }
 
     private function token(): string
+    {
+        if ($this->token === null) {
+            $this->token = $this->fetchToken();
+        }
+        return $this->token;
+    }
+
+    private function fetchToken(): string
     {
         $response =
             $this->httpApiClient->handle(
