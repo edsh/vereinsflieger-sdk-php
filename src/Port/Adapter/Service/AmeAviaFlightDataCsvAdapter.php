@@ -5,8 +5,39 @@ namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Port\Adapter\Serv
 
 use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Flight\Data\FlightData;
 
-class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
+final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
 {
+    const FIELD_LANDESKENNUNG = 0;
+    const FIELD_KENNZEICHEN = 1;
+    const FIELD_DATUM = 2;
+    const FIELD_STARTZEIT = 3;
+    const FIELD_LANDEZEIT = 4;
+    const FIELD_FLUGZEIT = 5;
+    const FIELD_STARTORT = 6;
+    const FIELD_LANDEORT = 7;
+    const FIELD_ANZAHL_LANDUNGEN = 8;
+    const FIELD_AUSLAND = 9;
+    const FIELD_PREISKATEGORIE = 10;
+    const FIELD_PIC_1 = 11;
+    const FIELD_MITGLIEDSNUMMER_1 = 12;
+    const FIELD_ANTEIL_1 = 13;
+    const FIELD_MITGLIEDSNUMMER_2 = 14;
+    const FIELD_ANTEIL_2 = 15;
+    const FIELD_MITGLIEDSNUMMER_3 = 16;
+    const FIELD_ANTEIL_3 = 17;
+    const FIELD_MITGLIEDSNUMMER_4 = 18;
+    const FIELD_ANTEIL_4 = 19;
+    const FIELD_BEMERKUNG = 20;
+    const FIELD_HOEHENMETER = 21;
+    const FIELD_EINHEITEN = 22;
+    const FIELD_VLS_1 = 23;
+    const FIELD_VSL_1_PK = 24;
+    const FIELD_VSL_2 = 25;
+    const FIELD_VSL_2_PK = 26;
+    const FIELD_FLUGART = 27;
+    const FIELD_STARTART = 28;
+    const FIELD_LUFTFAHRZEUGART = 29;
+    const FIELD_EINHEITEN_ZAEHLERSTAND_ALT = 30;
     /**
      * @var FlightData
      */
@@ -170,38 +201,68 @@ class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     public function offsetGet($offset)
     {
         switch ($offset) {
-            case 0: return $this->landeskennung();
-            case 1: return $this->kennzeichen();
-            case 2: return $this->datum();
-            case 3: return $this->startzeit();
-            case 4: return $this->landezeit();
-            case 5: return $this->flugzeit();
-            case 6: return $this->startort();
-            case 7: return $this->landeort();
-            case 8: return $this->anzahlLandungen();
-            case 9: return $this->ausland();
-            case 10: return $this->preiskategorie();
-            case 11: return $this->pic1();
-            case 12: return $this->mitgliedsnummer1();
-            case 13: return $this->anteil1();
-            case 14: return $this->mitgliedsnummer2();
-            case 15: return $this->anteil2();
-            case 16: return $this->mitgliedsnummer3();
-            case 17: return $this->anteil3();
-            case 18: return $this->mitgliedsnummer4();
-            case 19: return $this->anteil4();
-            case 20: return $this->bemerkung();
-            case 21: return $this->hoehenmeter();
-            case 22: return $this->einheiten();
-            case 23: return $this->vls1();
-            case 24: return $this->vls1pk();
-            case 25: return $this->vls2();
-            case 26: return $this->vls2pk();
-            case 27: return $this->flugart();
-            case 28: return $this->startart();
-            case 29: return $this->luftfahrzeugart();
-            case 30: return $this->einheitenZaehlerstandAlt();
-
+            case self::FIELD_LANDESKENNUNG:
+                return $this->landeskennung();
+            case self::FIELD_KENNZEICHEN:
+                return $this->kennzeichen();
+            case self::FIELD_DATUM:
+                return $this->datum();
+            case self::FIELD_STARTZEIT:
+                return $this->startzeit();
+            case self::FIELD_LANDEZEIT:
+                return $this->landezeit();
+            case self::FIELD_FLUGZEIT:
+                return $this->flugzeit();
+            case self::FIELD_STARTORT:
+                return $this->startort();
+            case self::FIELD_LANDEORT:
+                return $this->landeort();
+            case self::FIELD_ANZAHL_LANDUNGEN:
+                return $this->anzahlLandungen();
+            case self::FIELD_AUSLAND:
+                return $this->ausland();
+            case self::FIELD_PREISKATEGORIE:
+                return $this->preiskategorie();
+            case self::FIELD_PIC_1:
+                return $this->pic1();
+            case self::FIELD_MITGLIEDSNUMMER_1:
+                return $this->mitgliedsnummer1();
+            case self::FIELD_ANTEIL_1:
+                return $this->anteil1();
+            case self::FIELD_MITGLIEDSNUMMER_2:
+                return $this->mitgliedsnummer2();
+            case self::FIELD_ANTEIL_2:
+                return $this->anteil2();
+            case self::FIELD_MITGLIEDSNUMMER_3:
+                return $this->mitgliedsnummer3();
+            case self::FIELD_ANTEIL_3:
+                return $this->anteil3();
+            case self::FIELD_MITGLIEDSNUMMER_4:
+                return $this->mitgliedsnummer4();
+            case self::FIELD_ANTEIL_4:
+                return $this->anteil4();
+            case self::FIELD_BEMERKUNG:
+                return $this->bemerkung();
+            case self::FIELD_HOEHENMETER:
+                return $this->hoehenmeter();
+            case self::FIELD_EINHEITEN:
+                return $this->einheiten();
+            case self::FIELD_VLS_1:
+                return $this->vls1();
+            case self::FIELD_VSL_1_PK:
+                return $this->vls1pk();
+            case self::FIELD_VSL_2:
+                return $this->vls2();
+            case self::FIELD_VSL_2_PK:
+                return $this->vls2pk();
+            case self::FIELD_FLUGART:
+                return $this->flugart();
+            case self::FIELD_STARTART:
+                return $this->startart();
+            case self::FIELD_LUFTFAHRZEUGART:
+                return $this->luftfahrzeugart();
+            case self::FIELD_EINHEITEN_ZAEHLERSTAND_ALT:
+                return $this->einheitenZaehlerstandAlt();
         }
     }
 
@@ -219,7 +280,7 @@ class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
 
     public function offsetExists($offset)
     {
-        return $offset >=0 && $offset <= 30;
+        return $offset >= 0 && $offset <= 30;
     }
 
     public function offsetSet($offset, $value)
