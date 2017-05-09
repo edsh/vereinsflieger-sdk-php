@@ -5,6 +5,13 @@ namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Fligh
 
 class FlightData
 {
+    public const CHARGEMODE_NONE = '1';
+    public const CHARGEMODE_PILOT = '2';
+    public const CHARGEMODE_ATTENDANT = '3';
+    public const CHARGEMODE_GUEST = '4';
+    public const CHARGEMODE_PILOT_AND_ATTENDANT = '5';
+    public const CHARGEMODE_DIFFERENT_MEMBER = '7';
+
     /** @var string */ private $flid;
     /** @var string */ private $createtime;
     /** @var string */ private $modifytime;
@@ -39,13 +46,16 @@ class FlightData
     /** @var string */ private $finame;
     /** @var string */ private $pilotmemberid;
     /** @var string */ private $attendantmemberid;
+    /** @var string */ private $chargemode;
 
     public static function fromRepresentation(array $flightRepresentation)
     {
         $flightData = new self();
         foreach ($flightRepresentation as $key => $value) {
             $setterName = 'set'.ucfirst($key);
-            $flightData->$setterName($value);
+            if (method_exists(self::class, $setterName)) {
+                $flightData->$setterName($value);
+            }
         }
         return $flightData;
     }
@@ -185,4 +195,8 @@ class FlightData
     public function getAttendantmemberid(): ?string { return $this->attendantmemberid; }
 
     public function setAttendantmemberid(string $attendantmemberid = null) { $this->attendantmemberid = $attendantmemberid; }
+
+    public function getChargemode(): string { return $this->chargemode; }
+
+    public function setChargemode(string $chargemode) { $this->chargemode = $chargemode; }
 }

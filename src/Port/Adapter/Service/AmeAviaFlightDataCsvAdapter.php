@@ -132,14 +132,46 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
         return $this->flightData->getPilotmemberid();
     }
 
-    private function anteil1() { }
+    private function anteil1(): string
+    {
+        $chargeMode = $this->flightData->getChargemode();
+
+        if ($chargeMode === FlightData::CHARGEMODE_NONE
+            || $chargeMode === FlightData::CHARGEMODE_PILOT
+        ) {
+            return '100';
+        }
+
+        if ($chargeMode === FlightData::CHARGEMODE_PILOT_AND_ATTENDANT) {
+            return '50';
+        }
+
+        if ($chargeMode === FlightData::CHARGEMODE_ATTENDANT) {
+            return '0';
+        }
+
+        return '';
+    }
 
     private function mitgliedsnummer2(): string
     {
         return (string) $this->flightData->getAttendantmemberid();
     }
 
-    private function anteil2() { }
+    private function anteil2(): string
+    {
+        $chargeMode = $this->flightData->getChargemode();
+        if ($chargeMode === FlightData::CHARGEMODE_ATTENDANT) {
+            return '100';
+        }
+        if ($chargeMode === FlightData::CHARGEMODE_PILOT_AND_ATTENDANT) {
+            return '50';
+        }
+        if ($chargeMode === FlightData::CHARGEMODE_PILOT) {
+            return '0';
+        }
+        return '';
+    }
 
     private function mitgliedsnummer3() { }
 
