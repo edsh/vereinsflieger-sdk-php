@@ -298,15 +298,26 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
         }
     }
 
-    public function __toString(): string
+    public function fields(): array
     {
         $self = $this;
         return
+            array_map(function($item) use ($self) {
+                return $self[$item];
+            }, range(0,30));
+    }
+
+    public function putFile(\SplFileObject $file): void
+    {
+        $file->fputcsv($this->fields(), ';');
+    }
+
+    public function __toString(): string
+    {
+        return
             implode(
                 ';',
-                array_map(function($item) use ($self) {
-                    return $self[$item];
-                }, range(0,30))
+                $this->fields()
             );
     }
 

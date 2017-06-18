@@ -25,6 +25,11 @@ class RemoteAuthenticatedAccessToken implements AuthenticatedAccessTokenInterfac
      */
     private $accessToken;
 
+    /**
+     * @var bool
+     */
+    private $authenticated = false;
+
     public function __construct(
         ApiClient $apiClient,
         CredentialsInterface $credentials,
@@ -33,8 +38,15 @@ class RemoteAuthenticatedAccessToken implements AuthenticatedAccessTokenInterfac
         $this->accessToken = $accessToken;
         $this->credentials = $credentials;
         $this->httpApiClient = $apiClient;
+    }
 
-        $this->authenticate();
+    public function __toString(): string
+    {
+        if (!$this->authenticated) {
+            $this->authenticate();
+        }
+
+        return (string) $this->accessToken;
     }
 
     private function authenticate()
@@ -50,10 +62,6 @@ class RemoteAuthenticatedAccessToken implements AuthenticatedAccessTokenInterfac
                     ]))
             )
         );
-    }
-
-    public function __toString(): string
-    {
-        return (string) $this->accessToken;
+        $this->authenticated = true;
     }
 }
