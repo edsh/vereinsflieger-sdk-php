@@ -48,7 +48,7 @@ class FlightData
     /** @var string */ private $attendantmemberid;
     /** @var string */ private $chargemode;
 
-    public static function fromRepresentation(array $flightRepresentation)
+    public static function fromRepresentation(array $flightRepresentation): FlightData
     {
         $flightData = new self();
         foreach ($flightRepresentation as $key => $value) {
@@ -62,141 +62,141 @@ class FlightData
 
     public function getFlid(): string { return $this->flid; }
 
-    public function setFlid(string $flid) { $this->flid = $flid; }
+    private function setFlid(string $flid) { $this->flid = $flid; }
 
     public function getCreatetime(): string { return $this->createtime; }
 
-    public function setCreatetime(string $createtime) { $this->createtime = $createtime; }
+    private function setCreatetime(string $createtime) { $this->createtime = $createtime; }
 
     public function getModifytime(): string { return $this->modifytime; }
 
-    public function setModifytime(string $modifytime) { $this->modifytime = $modifytime; }
+    private function setModifytime(string $modifytime) { $this->modifytime = $modifytime; }
 
     public function getApid(): string { return $this->apid; }
 
-    public function setApid(string $apid) { $this->apid = $apid; }
+    private function setApid(string $apid) { $this->apid = $apid; }
 
     public function getCallsign(): string { return $this->callsign; }
 
-    public function setCallsign(string $callsign) { $this->callsign = $callsign; }
+    private function setCallsign(string $callsign) { $this->callsign = $callsign; }
 
     public function getUidpilot(): string { return $this->uidpilot; }
 
-    public function setUidpilot(string $uidpilot) { $this->uidpilot = $uidpilot; }
+    private function setUidpilot(string $uidpilot) { $this->uidpilot = $uidpilot; }
 
     public function getPilotname(): string { return $this->pilotname; }
 
-    public function setPilotname(string $pilotname) { $this->pilotname = $pilotname; }
+    private function setPilotname(string $pilotname) { $this->pilotname = $pilotname; }
 
     public function getUidattendant(): string { return $this->uidattendant; }
 
-    public function setUidattendant(string $uidattendant) { $this->uidattendant = $uidattendant; }
+    private function setUidattendant(string $uidattendant) { $this->uidattendant = $uidattendant; }
 
     public function getAttendantname(): string { return $this->attendantname; }
 
-    public function setAttendantname(string $attendantname) { $this->attendantname = $attendantname; }
+    private function setAttendantname(string $attendantname) { $this->attendantname = $attendantname; }
 
     public function getUidattendant2(): string { return $this->uidattendant2; }
 
-    public function setUidattendant2(string $uidattendant2) { $this->uidattendant2 = $uidattendant2; }
+    private function setUidattendant2(string $uidattendant2) { $this->uidattendant2 = $uidattendant2; }
 
     public function getAttendantname2(): string { return $this->attendantname2; }
 
-    public function setAttendantname2(string $attendantname2) { $this->attendantname2 = $attendantname2; }
+    private function setAttendantname2(string $attendantname2) { $this->attendantname2 = $attendantname2; }
 
     public function getUidattendant3(): string { return $this->uidattendant3; }
 
-    public function setUidattendant3(string $uidattendant3) { $this->uidattendant3 = $uidattendant3; }
+    private function setUidattendant3(string $uidattendant3) { $this->uidattendant3 = $uidattendant3; }
 
     public function getAttendantname3(): string { return $this->attendantname3; }
 
-    public function setAttendantname3(string $attendantname3) { $this->attendantname3 = $attendantname3; }
+    private function setAttendantname3(string $attendantname3) { $this->attendantname3 = $attendantname3; }
 
     public function getDeparturetime(): string { return $this->departuretime; }
 
-    public function setDeparturetime(string $departuretime) { $this->departuretime = $departuretime; }
+    private function setDeparturetime(string $departuretime) { $this->departuretime = $departuretime; }
 
     public function getDeparturelocation(): string { return $this->departurelocation; }
 
-    public function setDeparturelocation(string $departurelocation) { $this->departurelocation = $departurelocation; }
+    private function setDeparturelocation(string $departurelocation) { $this->departurelocation = $departurelocation; }
 
     public function getArrivaltime(): string { return $this->arrivaltime; }
 
-    public function setArrivaltime(string $arrivaltime) { $this->arrivaltime = $arrivaltime; }
+    private function setArrivaltime(string $arrivaltime) { $this->arrivaltime = $arrivaltime; }
 
     public function getArrivallocation(): string { return $this->arrivallocation; }
 
-    public function setArrivallocation(string $arrivallocation) { $this->arrivallocation = $arrivallocation; }
+    private function setArrivallocation(string $arrivallocation) { $this->arrivallocation = $arrivallocation; }
 
     public function getFlighttime(): string { return $this->flighttime; }
 
-    public function setFlighttime(string $flighttime) { $this->flighttime = $flighttime; }
+    private function setFlighttime(string $flighttime) { $this->flighttime = $flighttime; }
 
     public function getLandingcount(): string { return $this->landingcount; }
 
-    public function setLandingcount(string $landingcount) { $this->landingcount = $landingcount; }
+    private function setLandingcount(string $landingcount) { $this->landingcount = $landingcount; }
 
     public function getStarttype(): string { return $this->starttype; }
 
-    public function setStarttype(string $starttype) { $this->starttype = $starttype; }
+    private function setStarttype(string $starttype) { $this->starttype = $starttype; }
 
     public function getFlightmode(): string { return $this->flightmode; }
 
-    public function setFlightmode(string $flightmode) { $this->flightmode = $flightmode; }
+    private function setFlightmode(string $flightmode) { $this->flightmode = $flightmode; }
 
     public function getComment(): string { return $this->comment; }
 
-    public function setComment(string $comment) { $this->comment = $comment; }
+    private function setComment(string $comment) { $this->comment = $comment; }
 
     public function getFtid(): string { return $this->ftid; }
 
-    public function setFtid(string $ftid) { $this->ftid = $ftid; }
+    private function setFtid(string $ftid) { $this->ftid = $ftid; }
 
     public function getOffblock(): string { return $this->offblock; }
 
-    public function setOffblock(string $offblock) { $this->offblock = $offblock; }
+    private function setOffblock(string $offblock) { $this->offblock = $offblock; }
 
     public function getOnblock(): string { return $this->onblock; }
 
-    public function setOnblock(string $onblock) { $this->onblock = $onblock; }
+    private function setOnblock(string $onblock) { $this->onblock = $onblock; }
 
     public function getUidfi(): string { return $this->uidfi; }
 
-    public function setUidfi(string $uidfi) { $this->uidfi = $uidfi; }
+    private function setUidfi(string $uidfi) { $this->uidfi = $uidfi; }
 
     public function getBlocktime(): string { return $this->blocktime; }
 
-    public function setBlocktime(string $blocktime) { $this->blocktime = $blocktime; }
+    private function setBlocktime(string $blocktime) { $this->blocktime = $blocktime; }
 
     public function getUidcharge(): string { return $this->uidcharge; }
 
-    public function setUidcharge(string $uidcharge) { $this->uidcharge = $uidcharge; }
+    private function setUidcharge(string $uidcharge) { $this->uidcharge = $uidcharge; }
 
     public function getFlidtow(): string { return $this->flidtow; }
 
-    public function setFlidtow(string $flidtow) { $this->flidtow = $flidtow; }
+    private function setFlidtow(string $flidtow) { $this->flidtow = $flidtow; }
 
     public function getMotorstart(): string { return $this->motorstart; }
 
-    public function setMotorstart(string $motorstart) { $this->motorstart = $motorstart; }
+    private function setMotorstart(string $motorstart) { $this->motorstart = $motorstart; }
 
     public function getMotorend(): string { return $this->motorend; }
 
-    public function setMotorend(string $motorend) { $this->motorend = $motorend; }
+    private function setMotorend(string $motorend) { $this->motorend = $motorend; }
 
     public function getFiname(): ?string { return $this->finame; }
 
-    public function setFiname(string $finame = null) { $this->finame = $finame; }
+    private function setFiname(string $finame = null) { $this->finame = $finame; }
 
     public function getPilotmemberid(): string { return $this->pilotmemberid; }
 
-    public function setPilotmemberid(string $pilotmemberid) { $this->pilotmemberid = $pilotmemberid; }
+    private function setPilotmemberid(string $pilotmemberid) { $this->pilotmemberid = $pilotmemberid; }
 
     public function getAttendantmemberid(): ?string { return $this->attendantmemberid; }
 
-    public function setAttendantmemberid(string $attendantmemberid = null) { $this->attendantmemberid = $attendantmemberid; }
+    private function setAttendantmemberid(string $attendantmemberid = null) { $this->attendantmemberid = $attendantmemberid; }
 
     public function getChargemode(): string { return $this->chargemode; }
 
-    public function setChargemode(string $chargemode) { $this->chargemode = $chargemode; }
+    private function setChargemode(string $chargemode) { $this->chargemode = $chargemode; }
 }

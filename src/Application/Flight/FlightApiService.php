@@ -20,7 +20,7 @@ class FlightApiService
         $this->accessToken = $accessToken;
     }
 
-    public function allFlightsDataOfDay(\DateTimeInterface $day)
+    public function allFlightsDataOfDay(\DateTimeInterface $day): FlightsData
     {
         $response =
             $this->apiClient->handle(

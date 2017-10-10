@@ -7,6 +7,9 @@ use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Flight\Data
 
 final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
 {
+    const NEWLINE = "\r\n";
+    const SEPARATOR = ';';
+
     const FIELD_LANDESKENNUNG = 0;
     const FIELD_KENNZEICHEN = 1;
     const FIELD_DATUM = 2;
@@ -38,6 +41,7 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     const FIELD_STARTART = 28;
     const FIELD_LUFTFAHRZEUGART = 29;
     const FIELD_EINHEITEN_ZAEHLERSTAND_ALT = 30;
+
     /**
      * @var FlightData
      */
@@ -46,6 +50,11 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     public function __construct(FlightData $flightData)
     {
         $this->flightData = $flightData;
+    }
+
+    public function flightData(): FlightData
+    {
+        return $this->flightData;
     }
 
     private function landeskennung(): string
@@ -309,15 +318,59 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
 
     public function putFile(\SplFileObject $file): void
     {
-        $file->fputcsv($this->fields(), ';');
+        $file->fputcsv($this->fields(), self::SEPARATOR);
+    }
+
+    public static function headers(): string
+    {
+        return
+            utf8_decode(
+                implode(
+                self::SEPARATOR,
+                    [
+                        'Landeskennung', // 1
+                        'Kennzeichen', // 2
+                        'Datum', // 3
+                        'Startzeit', // 4
+                        'Landezeit', // 5
+                        'Flugzeit', // 6
+                        'Startort', // 7
+                        'Landeort', // 8
+                        'Anzahl Landungen', // 9
+                        'Ausland', // 10
+                        'Preiskategorie', // 11
+                        'PIC1', // 12
+                        'Mitgliedsnummer 1', // 13
+                        'Anteil 1', // 14
+                        'Mitgliedsnummer 2', // 15
+                        'Anteil 2', // 16
+                        'Mitgliedsnummer 3', // 17
+                        'Anteil 3', // 18
+                        'Mitgliedsnummer 4', // 19
+                        'Anteil 4', // 20
+                        'Bemerkung', // 21
+                        'Hoehenmeter', // 22
+                        'Einheiten', // 23
+                        'VLS1', // 24
+                        'VLS1PK', // 25
+                        'VLS2', // 26
+                        'VLS2PK', // 27
+                        'Flugart', // 28
+                        'Startart', // 29
+                        'Luftfahrzeugart', // 30
+                        'Einheiten - Zählerstand Alt' // 31
+                    ])
+            );
     }
 
     public function __toString(): string
     {
         return
-            implode(
-                ';',
-                $this->fields()
+            utf8_decode(
+                implode(
+                    self::SEPARATOR,
+                    $this->fields()
+                )
             );
     }
 
