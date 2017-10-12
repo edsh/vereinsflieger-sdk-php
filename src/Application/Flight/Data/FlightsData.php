@@ -6,11 +6,12 @@ namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Fligh
 class FlightsData implements \Countable, \IteratorAggregate
 {
     /**
+     * Raw flights representation as multitim array
      * @var array[]
      */
     private $flightsRepresentation;
 
-    public function __construct(array $flightsRepresentation)
+    public function __construct(array $flightsRepresentation = [])
     {
         $this->flightsRepresentation = $flightsRepresentation;
     }
@@ -19,10 +20,13 @@ class FlightsData implements \Countable, \IteratorAggregate
     {
         return
             new self(
-                $this->flightsRepresentation + iterator_to_array($flightsData->getIterator())
+                $this->flightsRepresentation + $flightsData->flightsRepresentation
             );
     }
 
+    /**
+     * @return \Generator|FlightData[]
+     */
     public function getIterator()
     {
         foreach ($this->flightsRepresentation as $flightRepresentation) {
