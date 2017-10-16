@@ -20,7 +20,7 @@ class FlightsData implements \Countable, \IteratorAggregate
     {
         return
             new self(
-                $this->flightsRepresentation + $flightsData->flightsRepresentation
+                array_merge($this->flightsRepresentation, $flightsData->flightsRepresentation)
             );
     }
 
@@ -41,15 +41,22 @@ class FlightsData implements \Countable, \IteratorAggregate
 
     /**
      * @param string $flightsJson
-     * @return FlightsData|FlightData[]
+     * @return FlightsData
      */
     public static function fromJsonRepresentation(string $flightsJson): self
+    {
+        return
+            new self(self::sanitizeFlightsData($flightsJson));
+    }
+
+    public static function sanitizeFlightsData(string $flightsJson): array
     {
         $plainData = \GuzzleHttp\json_decode($flightsJson, true);
         $sanitized =
             array_filter($plainData, function ($key) {
                 return is_int($key) || ctype_digit($key);
             }, ARRAY_FILTER_USE_KEY);
-        return new self(array_values($sanitized));
+        $representation = array_values($sanitized);
+        return $representation;
     }
 }

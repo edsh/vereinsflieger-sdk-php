@@ -27,4 +27,9 @@ class ApiClient
     {
         return $this->lowlevelHttpClient->send($request);
     }
+
+    public function handleAsync(RequestInterface $request): \GuzzleHttp\Promise\PromiseInterface
+    {
+        return $this->lowlevelHttpClient->sendAsync($request);
+    }
 }

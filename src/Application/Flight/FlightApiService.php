@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Flight;
 
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Request;
 use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Application\Flight\Data\FlightsData;
 use LuftsportvereinBacknangHeiningen\VereinsfliegerDeSdk\Infrastructure\ApiClient;
@@ -20,10 +21,10 @@ class FlightApiService
         $this->accessToken = $accessToken;
     }
 
-    public function allFlightsDataOfDay(\DateTimeInterface $day): FlightsData
+    public function allFlightsDataOfDay(\DateTimeInterface $day): PromiseInterface
     {
-        $response =
-            $this->apiClient->handle(
+        $promise =
+            $this->apiClient->handleAsync(
                 new Request(
                     'POST',
                     'interface/rest/flight/list/date',
@@ -38,6 +39,7 @@ class FlightApiService
                     )
                 )
             );
-        return FlightsData::fromJsonRepresentation((string)$response->getBody());
+        return $promise;
+        // return FlightsData::fromJsonRepresentation((string)$response->getBody());
     }
 }
