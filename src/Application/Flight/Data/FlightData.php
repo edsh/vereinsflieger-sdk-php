@@ -54,7 +54,7 @@ class FlightData
         foreach ($flightRepresentation as $key => $value) {
             $setterName = 'set'.ucfirst($key);
             if (method_exists(self::class, $setterName)) {
-                $flightData->$setterName($value);
+                $flightData->$setterName($value ?? '');
             }
         }
         return $flightData;
