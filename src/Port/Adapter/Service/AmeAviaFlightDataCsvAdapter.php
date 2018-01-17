@@ -70,35 +70,53 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
 
     private function datum(): string
     {
-        return
+        $date =
             \DateTimeImmutable::createFromFormat(
                 'Y-m-d H:i:s',
                 $this->flightData->getDeparturetime(),
                 new \DateTimeZone('UTC')
-            )
-            ->format('d.m.Y');
+            );
+
+        if ($date === false) {
+            return $this->flightData->getDeparturetime();
+        }
+
+        return
+            $date->format('d.m.Y');
     }
 
     private function startzeit(): string
     {
-        return
+        $date =
             \DateTimeImmutable::createFromFormat(
                 'Y-m-d H:i:s',
                 $this->flightData->getDeparturetime(),
                 new \DateTimeZone('UTC')
-            )
-                ->format('H:i');
+            );
+
+        if ($date === false) {
+            return $this->flightData->getDeparturetime();
+        }
+
+        return
+            $date->format('H:i');
     }
 
     private function landezeit(): string
     {
-        return
+        $date =
             \DateTimeImmutable::createFromFormat(
                 'Y-m-d H:i:s',
                 $this->flightData->getArrivaltime(),
                 new \DateTimeZone('UTC')
-            )
-                ->format('H:i');
+            );
+
+        if ($date === false) {
+            return $this->flightData->getArrivaltime();
+        }
+
+        return
+            $date ->format('H:i');
     }
 
     private function flugzeit(): string
