@@ -115,6 +115,8 @@ class FlightData
 
     public function getDateofflight(): string { return $this->dateofflight; }
 
+    public function setDateofflight(string $dateofflight) { $this->dateofflight = $dateofflight; }
+
     public function getDeparturetime(): string { return $this->departuretime; }
 
     private function setDeparturetime(string $departuretime) { $this->departuretime = $departuretime; }
