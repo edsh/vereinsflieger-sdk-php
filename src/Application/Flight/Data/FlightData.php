@@ -25,6 +25,7 @@ class FlightData
     /** @var string */ private $attendantname2;
     /** @var string */ private $uidattendant3;
     /** @var string */ private $attendantname3;
+    /** @var string */ private $dateofflight;
     /** @var string */ private $departuretime;
     /** @var string */ private $departurelocation;
     /** @var string */ private $arrivaltime;
@@ -111,6 +112,8 @@ class FlightData
     public function getAttendantname3(): string { return $this->attendantname3; }
 
     private function setAttendantname3(string $attendantname3) { $this->attendantname3 = $attendantname3; }
+
+    public function getDateofflight(): string { return $this->dateofflight; }
 
     public function getDeparturetime(): string { return $this->departuretime; }
 

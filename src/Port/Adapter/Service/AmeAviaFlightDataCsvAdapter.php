@@ -72,14 +72,10 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     {
         $date =
             \DateTimeImmutable::createFromFormat(
-                'Y-m-d H:i:s',
-                $this->flightData->getDeparturetime(),
+                'Y-m-d',
+                $this->flightData->getDateofflight(),
                 new \DateTimeZone('UTC')
             );
-
-        if ($date === false) {
-            return $this->flightData->getDeparturetime();
-        }
 
         return
             $date->format('d.m.Y');
@@ -89,14 +85,10 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     {
         $date =
             \DateTimeImmutable::createFromFormat(
-                'Y-m-d H:i:s',
+                'H:i:s',
                 $this->flightData->getDeparturetime(),
                 new \DateTimeZone('UTC')
             );
-
-        if ($date === false) {
-            return $this->flightData->getDeparturetime();
-        }
 
         return
             $date->format('H:i');
@@ -106,14 +98,10 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     {
         $date =
             \DateTimeImmutable::createFromFormat(
-                'Y-m-d H:i:s',
+                'H:i:s',
                 $this->flightData->getArrivaltime(),
                 new \DateTimeZone('UTC')
             );
-
-        if ($date === false) {
-            return $this->flightData->getArrivaltime();
-        }
 
         return
             $date ->format('H:i');
