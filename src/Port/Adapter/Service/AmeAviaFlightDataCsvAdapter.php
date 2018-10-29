@@ -65,7 +65,7 @@ final class AmeAviaFlightDataCsvAdapter implements \ArrayAccess
     private function kennzeichen(): string
     {
         strtok($this->flightData->getCallsign(), '-');
-        return strtok('-');
+        return strtok('-') ?: $this->flightData->getCallsign();
     }
 
     private function datum(): string
